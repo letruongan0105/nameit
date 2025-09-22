@@ -1,0 +1,1096 @@
+/* CSS variables for the color palette */
+:root {
+    --color-light-bg: #E3E4DB;
+    --color-gray: #CDCDCD;
+    --color-secondary: #AEA4BF;
+    --color-primary: #8F6593;
+    --color-dark-text: #3B252C;
+    --color-light-text: #FFFFFF;
+}
+
+/* Basic body and container styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-light-bg);
+    color: var(--color-dark-text);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Navbar scroll behavior */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(227, 228, 219, 0.9);
+    backdrop-filter: blur(5px);
+    transition: transform 0.5s ease-in-out;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar scroll up/down behavior */
+#navbar.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+#navbar.navbar-visible {
+    transform: translateY(0);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatar-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--color-gray);
+}
+
+.logo img {
+    height: 40px;
+    width: 40px;
+    max-width: 40px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(1.1);
+    border-radius: 50%;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--color-dark-text);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+/* Stylized Sign In Button */
+.sign-in-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 50px;
+    color: var(--color-light-text);
+    background-color: var(--color-primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.sign-in-btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-light-text);
+    color: var(--color-primary);
+}
+
+/* Main Layout (Sidebar + Content) */
+.main-container {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+    margin-top: 70px; /* Account for fixed navbar */
+    min-height: calc(100vh - 70px);
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: var(--color-dark-text);
+    color: var(--color-light-text);
+    transition: width 0.3s ease, transform 0.3s ease;
+    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    flex-shrink: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    /* Hide scrollbar for webkit browsers */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    /* Smooth scrolling */
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for webkit browsers */
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content: flex-end;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+/* Ensure sidebar header is always visible */
+.sidebar-header .toggle-btn {
+    background: none;
+    border: none;
+    color: var(--color-light-text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 4px;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    position: relative;
+}
+
+.sidebar-header .toggle-btn:hover {
+    color: var(--color-secondary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header .toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.sidebar.collapsed .sidebar-header .toggle-btn {
+    transform: rotate(180deg);
+}
+
+/* Ensure sidebar content is properly spaced */
+.sidebar .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: visible; /* Allow content to be visible */
+    padding-bottom: 2rem; /* Add bottom padding for better scrolling */
+}
+
+/* Improve sidebar navigation UX */
+.sidebar .nav-list-item {
+    padding: 1rem;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    background: none;
+    position: relative;
+    border-radius: 4px;
+    margin: 0.25rem 0.5rem;
+    user-select: none;
+    /* Ensure clickable area covers the entire item */
+    display: block;
+    width: calc(100% - 1rem);
+}
+
+.sidebar .nav-list-item:hover {
+    color: var(--color-secondary);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.sidebar .nav-list-item.active {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateX(5px);
+}
+
+.sidebar .nav-list-item span {
+    margin-left: 1rem;
+    white-space: nowrap;
+    font-weight: 500;
+    pointer-events: none; /* Prevent text selection issues */
+    display: block;
+    width: 100%;
+}
+
+.sidebar.collapsed .nav-list-item span {
+    display: none;
+}
+
+.sidebar.collapsed .sub-nav-list {
+    display: none;
+}
+
+.sidebar.collapsed .nav-list-item {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+/* Improve sub navigation UX */
+.sub-nav-list {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+    display: block; /* Ensure sub-nav is visible by default */
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    overflow: visible; /* Allow content to be visible */
+}
+
+.sub-nav-list .nav-list-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin: 0.25rem 0;
+    border-radius: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.sub-nav-list .nav-list-item:hover {
+    color: var(--color-secondary);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(3px);
+}
+
+.sub-nav-list .nav-list-item.active {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateX(3px);
+}
+
+.tab-btn {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    font-weight: 400;
+    pointer-events: none; /* Prevent text selection issues */
+}
+
+.tab-btn:hover {
+    color: var(--color-secondary);
+}
+
+/* Main Content Area */
+.content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: var(--color-light-bg);
+    position: relative; /* Important for absolute positioned children */
+    width: 100%;
+}
+
+/* Content sections */
+.content-section-A {
+    background-color: var(--color-secondary);
+    padding: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: var(--color-dark-text);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.content-section-B {
+    padding: 2rem;
+    flex-grow: 1;
+    background-color: var(--color-light-bg);
+    min-height: 500px;
+}
+
+/* Ensure all tab contents are properly positioned and don't overlap */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: fadeIn 0.3s ease;
+    width: 100%;
+    min-height: 400px; /* Ensure minimum height for content */
+    position: absolute; /* Use absolute positioning to prevent overlap */
+    top: 0;
+    left: 0;
+    z-index: 1;
+    visibility: hidden;
+    pointer-events: none; /* prevent hidden layers from intercepting clicks */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Force tab content to be visible when active */
+.tab-content.active {
+    display: block !important; /* Force display */
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative; /* Change to relative when active */
+    z-index: 2; /* Higher z-index when active */
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    pointer-events: auto; /* allow interaction only on active tab */
+}
+
+/* Ensure content sections are properly styled and visible */
+.content-section-A,
+.content-section-B {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Improve content readability */
+.content-section-B h3 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.content-section-B h4 {
+    color: var(--color-dark-text);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 0.5rem;
+}
+
+.content-section-B p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.content-section-B ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.content-section-B li {
+    margin-bottom: 0.5rem;
+}
+
+/* Dashboard specific styles */
+.dashboard-container .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    text-align: center;
+}
+
+.dashboard-container .stat-card {
+    background-color: var(--color-gray);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.profile-section-B {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.profile-section-B .small-card {
+    background-color: var(--color-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.profile-section-B .small-card ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.profile-section-B .small-card li {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.profile-section-B .big-card {
+    background-color: var(--color-light-text);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section-B .big-card h4 {
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+}
+
+.profile-right-column {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+}
+
+.profile-avatar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--color-gray);
+}
+
+.link-btn {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+}
+
+.link-btn.small {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+.profile-links {
+    margin-top: 0.5rem;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.skill-card {
+    background-color: var(--color-light-text);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.skill-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.skill-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* make it a square */
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.skill-placeholder {
+    font-size: 3rem;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Optional future image inside .skill-image */
+.skill-image .skill-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.skill-tag {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.skill-card h3 {
+    color: var(--color-dark-text);
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.skill-card p {
+    color: var(--color-dark-text);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Back Button */
+.back-btn {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #794d7c;
+}
+
+/* Modules Container */
+.modules-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* Responsive Design for Skills Grid */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .skill-card {
+        padding: 1rem;
+    }
+    
+    .skill-placeholder {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .sign-in-btn {
+        margin-top: 1rem;
+    }
+
+    /* Mobile sidebar adjustments */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 70px;
+        height: calc(100vh - 70px);
+        z-index: 999;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        width: 280px; /* Slightly wider on mobile for better touch targets */
+        overflow-y: auto; /* Allow scrolling on mobile */
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+        /* Hide scrollbar for webkit browsers */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    /* Hide scrollbar for webkit browsers on mobile */
+    .sidebar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .sidebar.hidden {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar:not(.hidden) {
+        transform: translateX(0);
+    }
+    
+    .sidebar.collapsed {
+        width: 280px; /* Keep full width on mobile */
+    }
+    
+    .main-container {
+        margin-left: 0;
+    }
+    
+    /* Mobile content adjustments */
+    .content-section-A,
+    .content-section-B {
+        padding: 1rem;
+    }
+    
+    .content-section-A {
+        position: relative; /* Remove sticky on mobile */
+        top: auto;
+    }
+    
+    .content-section-A h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .content-section-B h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .content-section-B h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    /* Mobile navigation adjustments */
+    .sidebar .nav-list-item {
+        padding: 1.2rem 1rem;
+        margin: 0.5rem;
+        width: calc(100% - 1rem);
+    }
+    
+    .sub-nav-list .nav-list-item {
+        padding: 0.8rem 1rem;
+        margin: 0.3rem 0;
+        width: 100%;
+    }
+    
+    /* Mobile toggle button adjustments */
+    .sidebar-header .toggle-btn {
+        min-width: 50px;
+        min-height: 50px;
+        font-size: 1.8rem;
+        z-index: 1001; /* Ensure it's above sidebar */
+    }
+    
+    /* Mobile content height adjustments */
+    .tab-content {
+        min-height: 300px;
+        position: absolute; /* Keep absolute positioning on mobile */
+    }
+    
+    .tab-content.active {
+        position: relative; /* Change to relative when active on mobile */
+        z-index: 2;
+    }
+    
+    .content-section-B {
+        min-height: 300px;
+    }
+    
+    /* Ensure content is visible on mobile */
+    .tab-content.active {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .profile-section-B {
+        grid-template-columns: 1fr;
+    }
+    .profile-right-column { grid-template-rows: auto auto; }
+    
+    .dashboard-container .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .profile-section-B {
+        grid-template-columns: 1fr 2fr;
+    }
+    
+    .dashboard-container .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Desktop sidebar adjustments */
+    .sidebar {
+        position: relative;
+        transform: none;
+        overflow-y: auto; /* Allow scrolling on desktop */
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+        /* Hide scrollbar for webkit browsers */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    /* Hide scrollbar for webkit browsers on desktop */
+    .sidebar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .sidebar.hidden {
+        transform: none;
+    }
+    
+    .sidebar:not(.hidden) {
+        transform: none;
+    }
+    
+    /* Ensure content is visible on desktop */
+    .tab-content.active {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative; /* Always relative on desktop when active */
+        z-index: 2;
+    }
+    
+    /* Desktop navigation adjustments */
+    .sidebar .nav-list-item {
+        width: calc(100% - 1rem);
+    }
+    
+    .sub-nav-list .nav-list-item {
+        width: 100%;
+    }
+    
+    /* Desktop tab content positioning */
+    .tab-content {
+        position: absolute; /* Keep absolute positioning on desktop */
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+/* Explore Section Styles */
+.explore-heading {
+    text-align: center;
+    color: var(--color-dark-text);
+    margin-bottom: 2rem;
+}
+
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem 1rem;
+}
+
+.explore-card {
+    background-color: var(--color-light-text);
+    border: 2px solid var(--color-secondary);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.explore-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+.card-image-container {
+    margin-bottom: 0.75rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 0;
+    display: block;
+}
+
+.card-tag {
+    display: inline-block;
+    color: var(--color-light-text);
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-tag.technology {
+    background-color: #5d9f5d;
+}
+
+.card-tag.science {
+    background-color: #588fb9;
+}
+
+.card-title {
+    color: var(--color-dark-text);
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--color-dark-text);
+}
+
+
+/* Accordion styles for modules */
+.module-accordion {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 2px solid var(--color-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.module-header {
+    background-color: var(--color-gray);
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: var(--color-dark-text);
+    position: relative;
+}
+
+.module-header:hover {
+    background-color: var(--color-light-bg);
+}
+
+.module-header .icon {
+    transition: transform 0.3s ease;
+}
+
+.module-header .icon.rotated {
+    transform: rotate(90deg);
+}
+
+.module-content {
+    background-color: var(--color-light-text);
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+
+.module-content.open {
+    max-height: 1000px;
+    padding: 1rem;
+}
+
+.module-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.module-content li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-gray);
+    cursor: pointer;
+    transition: color 0.2s;
+    position: relative;
+    padding-left: 25px;
+}
+
+.module-content li:hover {
+    color: var(--color-primary);
+}
+
+/* Tick icons */
+.icon-tick-unchecked, .icon-tick-checked {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-tick-unchecked {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%233B252C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle"%3E%3Ccircle cx="12" cy="12" r="10"%3E%3C/circle%3E%3C/svg%3E');
+}
+
+.icon-tick-checked {
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%238F6593" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"%3E%3Cpath d="M22 11.08V12a10 10 0 1 1-5.93-8.08"%3E%3C/path%3E%3Cpolyline points="22 4 12 14.01 9 11.01"%3E%3C/polyline%3E%3C/svg%3E');
+}
+
+.module-header .icon-tick-unchecked, .module-header .icon-tick-checked {
+    left: 10px;
+}
+
+.module-header span:first-of-type {
+    margin-left: 30px;
+}
+
+/* Lesson View Page */
+#lesson-view-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#lesson-title {
+    color: var(--color-dark-text);
+    margin-bottom: 1rem;
+}
+
+.video-player-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+    background-color: black;
+    aspect-ratio: 16 / 9;
+}
+
+.video-player-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+#video-description {
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.lesson-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.watched-btn {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+}
+
+.skip-btn {
+    background-color: #ddd;
+    color: var(--color-dark-text);
+}
+
+.lesson-navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+}
+
+.nav-btn {
+    background-color: var(--color-secondary);
+    color: var(--color-dark-text);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-light-text);
+}

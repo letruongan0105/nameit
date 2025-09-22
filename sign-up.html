@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Log In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Logo -->
+        <img src="img/logo_nameit.png" alt="Name It Logo" class="auth-logo">
+        <!-- Sign Up Form -->
+        <div id="signup-form">
+            <h1>We’re glad to meet you</h1>
+            <p class="subtitle">First thing’s first, we need your email to sign you up!</p>
+            <form id="signupForm">
+                <div class="input-group">
+                    <input type="email" id="signupEmail" required placeholder=" ">
+                    <label for="signupEmail">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="signupFirstName" required placeholder=" ">
+                    <label for="signupFirstName">First Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="signupLastName" required placeholder=" ">
+                    <label for="signupLastName">Last Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="signupUsername" required placeholder=" ">
+                    <label for="signupUsername">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="signupPassword" required placeholder=" ">
+                    <label for="signupPassword">Password</label>
+                </div>
+                <div class="input-group">
+                    <input type="url" id="signupLinkedin" placeholder=" ">
+                    <label for="signupLinkedin">Your LinkedIn Profile URL</label>
+                </div>
+                <button type="submit" class="main-btn">Sign up</button>
+            </form>
+            <button class="google-btn" onclick="window.location.href='https://accounts.google.com/'">
+               Sign up with Google
+            </button>
+            <div class="switch-form">
+                Already have an account? <a href="#" id="show-login">Log in</a>
+            </div>
+            <div class="form-message" id="signup-message"></div>
+        </div>
+        <!-- Log In Form -->
+        <div id="login-form" style="display:none;">
+            <h1>Welcome back! 👋</h1>
+            <p class="subtitle">Just fill in your details and you'll be taken to your account!</p>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" id="loginUsername" required placeholder=" ">
+                    <label for="loginUsername">Username or email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="loginPassword" required placeholder=" ">
+                    <label for="loginPassword">Password</label>
+                </div>
+                <p class="forgot-password">
+                    Forgot your <a href="#">username</a> or <a href="#">password</a>?
+                </p>
+                <button type="submit" class="main-btn">Log In</button>
+            </form>
+            <button class="google-btn" onclick="window.location.href='https://accounts.google.com/'">
+                Log in with Google
+            </button>
+            <div class="switch-form">
+                Don't have an account? <a href="#" id="show-signup">Create an account.</a>
+            </div>
+            <div class="form-message" id="login-message"></div>
+        </div>
+    </div>
+    <script src="backend.js"></script>
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

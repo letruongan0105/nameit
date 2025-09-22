@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name It Dashboard</title>
+    <!-- Link to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <!-- Name It logo -->
+                <img src="img/logo_nameit.png" alt="Name It Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Growth</a></li>
+                <li><a href="https://www.notion.so/THE-FUTURE-SOCIETY-268b31f28c0780f8828de8fb3325a946">Resources</a></li>
+                <li><a href="#about-us">About Us</a></li>
+            </ul>
+            <div class="user-profile"><img class="avatar-img" alt="avatar"><span class="username-display">Guest User</span></div>
+        </div>
+    </nav>
+
+    <!-- Main Layout Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="toggle-btn" id="sidebar-toggle">☰</button>
+            </div>
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-list-item" data-tab-parent="progress">
+                    <span>Your Progress</span>
+                    <ul class="sub-nav-list">
+                        <li class="nav-list-item" data-tab-target="profile">
+                            <span class="tab-btn">Profile</span>
+                        </li>
+                        <li class="nav-list-item active" data-tab-target="dashboard">
+                            <span class="tab-btn">Dashboard</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-list-item" data-tab-parent="growth">
+                    <span>Growth</span>
+                    <ul class="sub-nav-list">
+                        <li class="nav-list-item" data-tab-target="explore">
+                            <span class="tab-btn">Explore</span>
+                        </li>
+                        <li class="nav-list-item" data-tab-target="challenges">
+                            <span class="tab-btn">Focus</span>
+                        </li>
+                        <li class="nav-list-item" data-tab-target="mentors">
+                            <span class="tab-btn">Mentors</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-list-item" data-tab-parent="resources">
+                    <span>Resources</span>
+                    <ul class="sub-nav-list">
+                        <li class="nav-list-item" data-tab-target="playbooks">
+                            <span class="tab-btn">Playbooks</span>
+                        </li>
+                        <li class="nav-list-item" data-tab-target="focus-resources">
+                            <span class="tab-btn">Challenges</span>
+                        </li>
+                        <li class="nav-list-item" data-tab-target="power-ups">
+                            <span class="tab-btn">Power Ups Templates</span>
+                        </li>
+                        <li class="nav-list-item" data-tab-target="publications">
+                            <span class="tab-btn">Publications</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="content-area">
+            <!-- Content for each tab/section -->
+            
+            <!-- Dashboard Tab Content (Active by default) -->
+            <div class="tab-content active" id="dashboard">
+                <div class="content-section-A">
+                    <h2>Hey, <span id="dashboard-greeting-name">Guest User</span>!</h2>
+                </div>
+                <div class="content-section-B dashboard-container">
+                    <h3>Home</h3>
+                    <h4>Action items</h4>
+                    <ul>
+                        <li>Finish Module 3 of the Python course.</li>
+                        <li>Schedule a mentorship session with Jane Doe.</li>
+                        <li>Review the latest blog post.</li>
+                    </ul>
+                    <h4>Stats</h4>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h5>Objective</h5>
+                            <p>Launch your first web application</p>
+                        </div>
+                        <div class="stat-card">
+                            <h5>Current Goal</h5>
+                            <p>Complete the web dev bootcamp</p>
+                        </div>
+                        <div class="stat-card">
+                            <h5>Next Goal</h5>
+                            <p>Build a portfolio website</p>
+                        </div>
+                    </div>
+                    <h4>My plan</h4>
+                    <p>Details about the user's personal learning plan.</p>
+                    <h4>My progress</h4>
+                    <p>Visual representation of the user's progress.</p>
+                    <h4>The process</h4>
+                    <p>Explanation of the learning process.</p>
+                </div>
+            </div>
+
+            <!-- Profile Tab Content -->
+            <div class="tab-content" id="profile">
+                <div class="content-section-A">
+                    <h2>Profile</h2>
+                    <div class="profile-links">
+                        <a class="link-btn" href="#" target="_blank">Website</a>
+                        <a class="link-btn" href="#" target="_blank">LinkedIn</a>
+                        <a class="link-btn" href="#" target="_blank">Medium</a>
+                        <a class="link-btn" href="#" target="_blank">Discord</a>
+                    </div>
+                </div>
+                <div class="content-section-B profile-container">
+                    <div class="profile-section-B">
+                        <div class="big-card">
+                            <h3>About</h3>
+                            <p>This is the About section where the user can provide a brief biography.</p>
+                            <h3>Portfolio</h3>
+                            <p>This is the Portfolio section showcasing the user's projects and work.</p>
+                            <h3>Big Goal</h3>
+                            <p>This is where the user's main goal is outlined, providing motivation and direction.</p>
+                        </div>
+                        <div class="profile-right-column">
+                        <div class="small-card">
+                            <h3>Extra</h3>
+                            <p><strong>Gender:</strong> N/A</p>
+                            <p><strong>Birthday:</strong> N/A</p>
+                            <p><strong>Personality Type:</strong> N/A</p>
+                        </div>
+                        <div class="small-card">
+                            <h3>Explore</h3>
+                            <p>Tiến độ và những gì người này đã khám phá:</p>
+                            <ul>
+                                <li>Data Science</li>
+                                <li>Python Programming</li>
+                                <li>UI/UX Design</li>
+                                <li>Circular Economy</li>
+                                <li>Fintech</li>
+                            </ul>
+                            <a href="#">Show more</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Growth Section -->
+            <div id="explore-content" class="tab-content" style="display: none;" data-tab-id="explore">
+                <div class="explore-grid-container" id="explore-grid-view">
+                    <h2 class="explore-heading">Start a new Explore</h2>
+                    <div class="explore-grid">
+                        <div class="explore-card" data-explore-id="metaverse">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=Metaverse" alt="Metaverse">
+                            </div>
+                            <span class="card-tag technology">Technology</span>
+                            <h3 class="card-title">Metaverse</h3>
+                            <p class="card-description">A virtual world in which users interact while represented by avatars, typically in a 3D display, with the experience focused on social and economic connection.</p>
+                        </div>
+                        <div class="explore-card" data-explore-id="sustainable-energy">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=Sustainable+Energy" alt="Sustainable Energy">
+                            </div>
+                            <span class="card-tag science">Science</span>
+                            <h3 class="card-title">Sustainable Energy</h3>
+                            <p class="card-description">Energy is sustainable if it "meets the needs of the present without compromising the ability of future generations to meet their own needs."</p>
+                        </div>
+                        <div class="explore-card" data-explore-id="autonomous-vehicles">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=AV" alt="Autonomous Vehicles">
+                            </div>
+                            <span class="card-tag technology">Technology</span>
+                            <h3 class="card-title">Autonomous Vehicles</h3>
+                            <p class="card-description">Understand the future of transportation; AV are vehicles equipped with technology to sense their environment and operate without human intervention.</p>
+                        </div>
+                        <div class="explore-card">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=AI" alt="AI">
+                            </div>
+                            <span class="card-tag">AI & ML</span>
+                            <h3 class="card-title">Artificial Intelligence</h3>
+                            <p class="card-description">Master machine learning algorithms and AI applications.</p>
+                        </div>
+                        <div class="explore-card">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=Data" alt="Data Analysis">
+                            </div>
+                            <span class="card-tag">Data Analysis</span>
+                            <h3 class="card-title">Data Analytics</h3>
+                            <p class="card-description">Turn raw data into valuable insights and make informed decisions.</p>
+                        </div>
+                        <div class="explore-card">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=Cloud" alt="Cloud Computing">
+                            </div>
+                            <span class="card-tag">Cloud</span>
+                            <h3 class="card-title">Cloud Computing</h3>
+                            <p class="card-description">Learn to build and manage applications on cloud platforms.</p>
+                        </div>
+                        <div class="explore-card">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=Design" alt="UI/UX Design">
+                            </div>
+                            <span class="card-tag">Design</span>
+                            <h3 class="card-title">UI/UX Design</h3>
+                            <p class="card-description">Create user-friendly and visually appealing digital products.</p>
+                        </div>
+                        <div class="explore-card">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=Programming" alt="Programming">
+                            </div>
+                            <span class="card-tag">Programming</span>
+                            <h3 class="card-title">Web Development</h3>
+                            <p class="card-description">Build interactive and responsive websites from scratch.</p>
+                        </div>
+                        <div class="explore-card">
+                            <div class="card-image-container">
+                                <img src="https://placehold.co/150x150/8F6593/FFFFFF?text=Accounting" alt="Accounting">
+                            </div>
+                            <span class="card-tag">Accounting</span>
+                            <h3 class="card-title">Financial Accounting</h3>
+                            <p class="card-description">Master financial principles and manage business finances.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="explore-detail-content" style="display: none;">
+                    <button id="back-to-explore-grid" class="back-btn">&larr; Quay lại</button>
+                    <h2 id="explore-topic-title"></h2>
+                    <div class="explore-modules-container" id="modules-container">
+                        <!-- Nội dung modules sẽ được tạo bằng JavaScript -->
+                    </div>
+                </div>
+                <div id="lesson-view-content" style="display: none;">
+                    <button id="back-to-modules-btn" class="back-btn">&larr; Quay lại</button>
+                    <h2 id="lesson-title"></h2>
+                    <div class="video-player-container">
+                        <iframe id="video-frame" width="100%" height="auto" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p id="video-description"></p>
+                    <div class="lesson-buttons">
+                        <button id="watched-btn" class="action-btn watched-btn">Đã xem</button>
+                        <button id="skip-btn" class="action-btn skip-btn">Skip, not relevant</button>
+                    </div>
+                    <div class="lesson-navigation">
+                        <button id="prev-lesson-btn" class="nav-btn">&larr; Trước</button>
+                        <button id="next-lesson-btn" class="nav-btn">Sau &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="challenges">
+                <div class="content-section-A">
+                    <h2>Challenges</h2>
+                </div>
+                <div class="content-section-B">
+                    <p>Content related to challenges and competitions goes here.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="mentors">
+                <div class="content-section-A">
+                    <h2>Mentors</h2>
+                </div>
+                <div class="content-section-B">
+                    <p>Information about mentors and how to connect with them.</p>
+                </div>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="tab-content" id="playbooks">
+                <div class="content-section-A">
+                    <h2>Playbooks</h2>
+                </div>
+                <div class="content-section-B">
+                    <p>Content about playbooks and guides.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="focus-resources">
+                <div class="content-section-A">
+                    <h2>Focus Resources</h2>
+                </div>
+                <div class="content-section-B">
+                    <p>Information from <a href="https://www.focusresourcesinc.com/">Focus Resources Inc.</a> goes here.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="power-ups">
+                <div class="content-section-A">
+                    <h2>Power Ups Templates</h2>
+                </div>
+                <div class="content-section-B">
+                    <p>Templates and tools to power up your projects.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="career-guidance">
+                <div class="content-section-A">
+                    <h2>Career Guidance</h2>
+                </div>
+                <div class="content-section-B">
+                    <p>Resources for career guidance and planning.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="publications">
+                <div class="content-section-A">
+                    <h2>Publications</h2>
+                </div>
+                <div class="content-section-B">
+                    <p>Information about publications and research.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="dashboard.js"></script>
+</body>
+</html>
