@@ -4,49 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroVideo = document.getElementById('heroVideo');
     
     // Ensure video plays properly
-    if (heroVideo) {
-        heroVideo.muted = true;
-        heroVideo.setAttribute('muted', '');
-        heroVideo.setAttribute('playsinline', '');
-        heroVideo.loop = true;
-
-        const tryPlay = () => {
-            heroVideo.play().then(() => {
-                // Success
-            }).catch(function(error) {
-                console.log("Video autoplay failed, will retry on interaction:", error);
-            });
-        };
-
-        // Attempt immediate play
-        tryPlay();
-
-        // Retry on first user interaction if blocked
-        const resumeOnInteract = () => {
-            tryPlay();
-            window.removeEventListener('click', resumeOnInteract);
-            window.removeEventListener('touchstart', resumeOnInteract);
-            window.removeEventListener('keydown', resumeOnInteract);
-        };
-        window.addEventListener('click', resumeOnInteract, { once: true });
-        window.addEventListener('touchstart', resumeOnInteract, { once: true });
-        window.addEventListener('keydown', resumeOnInteract, { once: true });
-
-        // Ensure video loops infinitely (manual fallback)
-        heroVideo.addEventListener('ended', function() {
-            heroVideo.currentTime = 0;
-            tryPlay();
-        });
-
-        // Handle video loading
-        heroVideo.addEventListener('loadeddata', function() {
-            console.log("Video loaded successfully");
-        });
-        
-        heroVideo.addEventListener('error', function(e) {
-            console.log("Video error:", e);
-        });
-    }
+    
     
     // Check if page content is already loaded
     if (document.readyState === 'complete') {
