@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - NameIt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Link Font Awesome cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- 1. NAV BAR (Dựa trên cấu trúc Index của bạn) -->
+    <header  class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo_nameit.png" alt="Name It Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="growth.html">Growth</a>
+            <a href="https://www.notion.so/nameit-archive/THE-INNOVATION-LIBRARY-268b31f28c0780f8828de8fb3325a946">Library</a>
+            <a href="about-us.html" class="active">About Us</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="main-btn small-btn" onclick="window.location.href='sign-up.php'">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- 2. NỘI DUNG TRANG ABOUT US -->
+    <main class="page-content">
+        <section class="about-layout container mx-auto py-12 px-4">
+            
+            <!-- BÊN TRÁI: Bảng Nội Dung (Table of Contents - TOC) -->
+            <aside class="toc-sidebar">
+                <h2 class="toc-title">Mục Lục</h2>
+                <nav class="toc-nav">
+                    <ul>
+                        <li><a href="#purpose">1. Our Purpose</a></li>
+                        <li>
+                            <a href="#story">2. Our Story</a>
+                        </li>
+                        <li>
+                            <a href="#activities">3. Our Activities</a>
+                            <ul class="toc-sub-list">
+                                <li><a href="#goal">The Goal</a></li>
+                                <li><a href="#learning-lab">Learning Lab</a></li>
+                                <li><a href="#workspace">Workspace</a></li>
+                                <li><a href="#challenges">Challenges</a></li>
+                                <li><a href="#guidebooks">Guidebooks</a></li>
+                                <li><a href="#community">Community</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- BÊN PHẢI: Nội Dung Chính -->
+            <article class="main-content">
+                
+                <h2 id="purpose" class="content-heading">Our Purpose</h2>
+                <p>We aim to build an <b>international learning laboratory for young innovators</b> across every stage of the innovation process, creating new solutions to the world’s problems.</p>
+                <p>To reach that goal, we connect world-class technical, professional, financial, and community resources to anyone who wants to work online or in tech.</p>
+
+                <h2 id="story" class="content-heading mt-10">Our Story</h2>
+                <p>We saw that creativity has no limits, yet access to learning, exchange, experimentation, feedback, and growth is not equal across communities.</p>
+                <p>The path into careers and entrepreneurship faces three gaps:</p>
+                <ol class="gap-list">
+                    <p><b>A signal gap</b> where recruiters and collaborators lack reliable evidence of skills.</p>
+                    <p><b>A practice gap</b> where safe spaces to test ideas, make mistakes, and learn through doing are scarce.</p>
+                    <p><b>A direction gap</b> where learners are unsure how to turn curiosity into impact or design projects that are both innovative and sustainable.</p>
+                </ol>
+                <p>We chose to build an international community of young innovators.</p>
+                <p class="quote-box">
+                    <b>NameIt</b> is a <b> global innovation laboratory </b> and a <b>community of young innovators </b> that supports them to build their own wild projects, shared resources, and collaboration with others. NameIt helps turn ideas into skills, skills into jobs, and jobs into impact. By equipping people with skills, thinking systems, and up-to-date technology for career growth and venture building, we align our values with SDG 8 and the spirit of innovation.
+                </p>
+
+                <h2 id="activities" class="content-heading mt-10">Our Activities</h2>
+                
+                <h3 id="goal" class="content-subheading">The Goal</h3>
+                <p>The overall goal of NameIt is to help innovators build their own innovation. People arrive at different stages. Some have not started yet, others have been active for a year or more. Whatever the stage, our goal is to help them become much stronger as a community.</p>
+                
+                <h3 id="learning-lab" class="content-subheading">Learning Lab</h3>
+                <p>To understand, you need to learn. The Learning Lab curates videos and learning materials by topics and modules across technology and global issues. It gives innovators an overview of specific topics they care about.</p>
+                
+                <h3 id="workspace" class="content-subheading">Workspace</h3>
+                <p>After learning, you build. The Workspace gives innovators a place to dive deeper into topics through extended resources, refine their ideas, and move into practical trials.</p>
+                
+                <h3 id="challenges" class="content-subheading">Challenges</h3>
+                <p>Building brings challenges. Challenges work like a gym for innovators to train thinking and problem solving. This area includes simulation challenges at three levels easy/medium/hard, covering business problems, global issues, and personal product builds. Challenges often come with opportunities. In the same section we attach useful opportunities such as competitions, programs, webinars, and internships.</p>
+                
+                <h3 id="guidebooks" class="content-subheading">Guidebooks</h3>
+                <p>Read the instructions before you act. The Guidebooks are practical manuals for innovators. Each one starts with a simple “How to” and walks you through the essentials: why it matters, what steps to take, and where to find reliable resources. You read, apply, reflect, and turn the guidance into outcomes. New guidebooks are added regularly.</p>
+                
+                <h3 id="community" class="content-subheading">Community</h3>
+                <p>Sharing work with a community helps everyone grow. Our Discord community is where innovators discuss new technologies and events, learn together, run peer review, and share achievements and opportunities. We host weekly meetups for hands-on workshops that encourage initiative. We also run Demo Days for pitching and feedback from our mentors.</p>
+                
+                <!-- Hình ảnh ở cuối trang -->
+                <div class="image-container mt-12 mb-8 text-center">
+                    <!-- Sử dụng placeholder image -->
+                    <img src="img/innovation.png" alt="Hình ảnh minh họa" class="content-image">
+                </div>
+            </article>
+        </section>
+        
+    </main>
+
+    <!-- 3. PHẦN CONTACT US (Footer) -->
+    <footer id="contact-us">
+        <div class="footer-container">
+            <div class="footer-content">
+                <h3>CONTACT US</h3>
+                <p>On a mission to create young innovators everywhere</p>
+                <h4>Get In Touch</h4>
+                <p>Reach out to us to discuss how we can support your local business. We are located across the globe and can be reached via email at <a href="mailto:nameitorg@gmail.com">nameitorg@gmail.com</a>.</p>
+
+            <div class="social-links mt-8">
+                <a href="https://www.facebook.com/profile.php?id=61579775233093" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <p class="copyright-text mt-12">&copy; 2025 NameIt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS for Navbar toggle (nếu cần) và Smooth Scrolling -->
+    <script>
+        // JS giả định cho chức năng Navbar Toggle (nếu có trong index)
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('open');
+                });
+            }
+
+            // Simple smooth scrolling for TOC links
+            document.querySelectorAll('.toc-nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
