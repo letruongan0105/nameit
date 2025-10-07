@@ -3,53 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name It - Join the community learn and earn by doing.</title>
+    <title>NameIt - Join the community!</title>
     <!-- Link to Roboto font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="loading-overlay">
-        <h1>Name It</h1>
+        <h1>NameIt</h1>
         <div class="loader"></div>
-    </div>
-
-    <!-- Video Background for Hero Section -->
-    <div class="video-container">
-        <!-- Using local video file -->
-        <video autoplay muted loop playsinline preload="metadata" id="heroVideo" poster="img/IMG 1.1.png">
-            <source src=# type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
     </div>
 
     <!-- Navigation Bar -->
     <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <!-- Name It logo -->
-                <img src="img/logo_nameit.png" alt="Name It Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#hero">Growth</a></li>
-                <li><a href="https://www.notion.so/THE-FUTURE-SOCIETY-268b31f28c0780f8828de8fb3325a946">Resources</a></li>
-                <li><a href="#about-us">About Us</a></li>
-            </ul>
-            <a href="sign-up.html" class="sign-in-btn">Sign In</a>
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <img src="img/logo_nameit.png" alt="Name It Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="growth.html">Growth</a>
+            <a href="https://www.notion.so/nameit-archive/THE-INNOVATION-LIBRARY-268b31f28c0780f8828de8fb3325a946">Library</a>
+            <a href="about-us.html">About Us</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="main-btn small-btn" onclick="window.location.href='sign-up.php'">Sign Up</button>
         </div>
+    </div>
     </nav>
+
 
     <!-- Main Content Sections -->
     <main>
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="blog-background">
+                    <!-- Image slideshow container -->
+                    <div class="video-container">
+                        <!-- Using placeholder images. Replace these with actual images. -->
+                        <img class="mySlides" src="img/background1.png" style="width:100%">
+                    </div>
+                </div>
             <div class="hero-content">
-                <h1 class="hero-title">Name it to claim it</h1>
-                <p class="hero-subtitle">Join the community learn and earn by doing.</p>
+                <h1 class="hero-title">Towards building <br> a community that creates <br> what doesn’t exist yet</h1> <br>
+                <p class="hero-subtitle">NameIt is a <b> global innovation laboratory </b> and a <b>community of young innovators </b> that <br> supports them to build their own wild projects, shared resources, and collaboration <br> with others. Because before anything can be built, someone has to <b> name it </b>.</p> <br>
+                <a href="about-us.html" class="cta-btn">Learn More About Us</a>
             </div>
         </section>
 
@@ -58,20 +60,15 @@
             <div class="container">
                 <div class="intro-layout">
                     <div class="intro-content">
-                        <h2>Welcome to Name it</h2>
-                        <h3>How can we make an innovator?</h3>
+                        <h2>Welcome to NameIt</h2>
+                        <h3>What are we trying to build?</h3>
                         <p>
-                            Work changes fast. Education and hiring move slower. Youth, migrants, and local communities seek dignity through work yet face a skills mismatch, weak networks, and few entry points. SDG8 calls for decent jobs and inclusive growth. We need innovators who solve real problems and bring income to families and neighborhoods.
-NameIt grows such innovators through action. Simulation challenges expose real constraints and tradeoffs. Playbooks and templates remove confusion. Mentor and peer reviews bring fast, honest feedback. Each cycle ends with public evidence: shipped work, verified CV bullets on LinkedIn, portfolio links, or a tested venture plan. Signals employers trust. Foundations for self employment.
-NameIt serves young people, communities, and social tech startups worldwide. The platform joins learning with doing, so skills become work and work creates impact. Join to learn and earn by doing.
-                        </p>
-                        <p>
-                            Name It is a global initiative equipping young leaders with fintech and sustainability education. We provide young students a toolkit to create sustainable solutions to our world's problems. However, we don't just expose youth to financial technology & sustainable practices: we teach them how to use these skills to build real-world solutions.
+                            We have basically the same access to information, so what's separating us from doing really crazy next-level things is not access to content anymore. Human potential is the problem that we realized. It is also a resource that is more valuable than any gold or oil or whatever. We can create so much value, solve so many problems with maximizing human potential. But we have no tools to extract it. That’s why NameIt exists. We’re building an initiative laboratory where learning meets doing, designed for young innovators who want to test ideas, sharpen their craft, grow through creation or whatever they can think of. 
                         </p>
                     </div>
                     <div class="intro-image-container">
                         <div class="image-placeholder">
-                            <span class="placeholder-text">IMG 1.1</span>
+                            <img src="img/IMG1.1.png" alt="IMG 1.1" style="width: 100%; height: 100%;">
                         </div>
                     </div>
                 </div>
@@ -81,32 +78,31 @@ NameIt serves young people, communities, and social tech startups worldwide. The
         <!-- Part 1: Our Activities Section -->
         <section id="part-1" class="content-section activities-section">
             <div class="container">
-                <h2>Our Activities</h2>
+                <h2>Our Focus</h2>
                 <div class="activities-grid">
                     <div class="activity-item">
                         <div class="activity-image-placeholder">
-                            <span class="placeholder-text">IMG 1.2</span>
+                            <img src="img/IMG1.2.png" alt="IMG 1.2"  style="width: 100%; height: 100%;">
                         </div>
                         <h3>Individuals</h3>
-                        <p>NameIt supports career planning and skill growth so you can earn online or work in technology firms. The innovator curriculum covers high-value digital skills such as programming, cloud, graphic design, data analytics, AI, and accounting services, plus technical English and workplace skills, plus entrepreneurship and freelancing. You learn by doing through simulations, briefs, and mentored tasks. Each cycle ends with a verified CV bullet, a public project card, or a tested micro-venture aligned with SDG8.
-                            Startups
+                        <p>NameIt gives people a place to train their ideas, test what they learn, and turn curiosity into real, wild projects. It’s built for those who want to grow through action. We are developing to maximize every-single-one’s potential that is always more than one can think.
                             </p>
-                        <p> NameIt upskills teams on specialized technologies and strengthens executives through capacity building and strategy support. We co design hiring through challenge based assessments, map global market openings, and connect partner networks across regions. Outcomes include faster onboarding, clearer roadmaps, and first pilots in new markets.</p>
+
                     </div>
                     <div class="activity-item">
                         <div class="activity-image-placeholder">
-                            <span class="placeholder-text">IMG 1.3</span>
+                            <img src="img/IMG1.3.png" alt="IMG 1.3"  style="width: 100%; height: 100%;">
                         </div>
-                        <h3>Start Up</h3>
-                        <p>NameIt upskills teams on specialized technologies and strengthens executives through capacity building and strategy support. We co design hiring through challenge based assessments, map global market openings, and connect partner networks across regions. Outcomes include faster onboarding, clearer roadmaps, and first pilots in new markets.
+                        <h3>Community</h3>
+                        <p>NameIt connects people who care about building the next big crazy things. It’s a network of learners and makers. We keep an active Discord where we can show our ideas, collaborate with each other, exchange feedback, share tools, push each other forward and do wild projects.
                         </p>
                     </div>
                     <div class="activity-item">
                         <div class="activity-image-placeholder">
-                            <span class="placeholder-text">IMG 1.4</span>
+                            <img src="img/IMG1.4.png" alt="IMG 1.4"  style="width: 100%; height: 100%;">
                         </div>
-                        <h3>Social Community</h3>
-                        <p>NameIt hosts dialogue and hands-on engineering design for sustainable development under SDG8. We run open webinars and focused micro workshops. We keep an active Discord for peer help and mentorship. The aim is a practical network where briefs reach doers and paid work follows.
+                        <h3>Market</h3>
+                        <p>NameIt links talent with real opportunities. It helps translate creative energy into work, startups, and collaborations that last. By building this bridge, innovation becomes a way of working and creating value for social and economic impact.
                         </p>
                     </div>
                 </div>
@@ -120,18 +116,17 @@ NameIt serves young people, communities, and social tech startups worldwide. The
                     <!-- Image slideshow container -->
                     <div class="slideshow-container">
                         <!-- Using placeholder images. Replace these with actual images. -->
-                        <img class="mySlides" src="https://placehold.co/1200x800/CDCDCD/000000?text=Image+1" style="width:100%">
-                        <img class="mySlides" src="https://placehold.co/1200x800/AEA4BF/000000?text=Image+2" style="width:100%">
-                        <img class="mySlides" src="https://placehold.co/1200x800/8F6593/000000?text=Image+3" style="width:100%">
-                        <img class="mySlides" src="https://placehold.co/1200x800/3B252C/FFFFFF?text=Image+4" style="width:100%">
-                        <img class="mySlides" src="https://placehold.co/1200x800/E3E4DB/000000?text=Image+5" style="width:100%">
-                        <img class="mySlides" src="https://placehold.co/1200x800/FFFFFF/000000?text=Image+6" style="width:100%">
-                        <img class="mySlides" src="https://placehold.co/1200x800/CDCDCD/000000?text=Image+7" style="width:100%">
-                        <img class="mySlides" src="https://placehold.co/1200x800/AEA4BF/000000?text=Image+8" style="width:100%">
+                        <img class="mySlides" src="img/slide1.png" style="width:100%">
+                        <img class="mySlides" src="img/slide2.png" style="width:100%">
+                        <img class="mySlides" src="img/slide3.png" style="width:100%">
+                        <img class="mySlides" src="img/slide6.png" style="width:100%">
+                        <img class="mySlides" src="img/slide5.png" style="width:100%">
+                        <img class="mySlides" src="img/slide7.png" style="width:100%">
+                        <img class="mySlides" src="img/slide8.png" style="width:100%">
                     </div>
                 </div>
                 <div class="blog-card">
-                    <h3>Bài blog mới nhất</h3>
+                    <h3>The Newest Blog</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <a href="#" class="learn-more-btn">Learn more</a>
                 </div>
@@ -145,19 +140,19 @@ NameIt serves young people, communities, and social tech startups worldwide. The
             </div>
                 <div class="skills-conveyor-wrapper">
                     <div class="conveyor-belt conveyor-1">
-                        <div class="skill-item">Lập trình</div>
-                        <div class="skill-item">Điện toán đám mây</div>
-                        <div class="skill-item">Thiết kế đồ họa</div>
-                        <div class="skill-item">Phân tích dữ liệu</div>
+                        <div class="skill-item">Programming</div>
+                        <div class="skill-item">Quantum Computing</div>
+                        <div class="skill-item">Digital Twin</div>
+                        <div class="skill-item">UI/UX design</div>
                         <div class="skill-item">Artificial Intelligence</div>
-                        <div class="skill-item">Dịch vụ kế toán</div>
+                        <div class="skill-item">Metaverse</div>
                         <!-- Duplicate content for seamless scrolling -->
-                        <div class="skill-item">Lập trình</div>
-                        <div class="skill-item">Điện toán đám mây</div>
-                        <div class="skill-item">Thiết kế đồ họa</div>
-                        <div class="skill-item">Phân tích dữ liệu</div>
-                        <div class="skill-item">Artificial Intelligence</div>
-                        <div class="skill-item">Dịch vụ kế toán</div>
+                        <div class="skill-item">Synthetic Biology</div>
+                        <div class="skill-item">Autonomous Vehicles</div>
+                        <div class="skill-item">Web Development</div>
+                        <div class="skill-item">Sustainable Energy</div>
+                        <div class="skill-item">Space Technologies</div>
+                        <div class="skill-item">Internet of Things</div>
                     </div>
                     <div class="conveyor-belt conveyor-2">
                         <div class="skill-item">Web Development</div>
@@ -180,40 +175,25 @@ NameIt serves young people, communities, and social tech startups worldwide. The
         <!-- Part 4: Decent Work Learning Lab -->
         <section id="part-4" class="content-section lab-section">
             <div class="container">
-                <h2>Decent Work and Economic Growth Learning Lab</h2>
-                <p>Phòng thí nghiệm học và làm hướng tới SDG8. Người học xử lý tình huống giả lập rồi chuyển sang dự án thật. Mỗi vòng đều có phản hồi, đánh giá và kết nối cơ hội.</p>
+                <h2>Innovation Learning Laboratory</h2>
+                <p>The Innovation Learning Laboratory is a space for experimenting with ideas and turning them into progress through shared practice and collaboration. It is designed to serve your curiosity. Use it to create the next extraordinary things!</p>
+                <br>
                 <div class="pillars-grid">
-                    <a href="#" class="pillar-item">
+                    <a href="growth.html" class="pillar-item">
                         <div class="icon">💻</div>
-                        <h3>Phổ cập xu hướng công nghệ mới cho khởi nghiệp</h3>
+                        <h3>Everything about Emerging Technologies</h3>
                     </a>
-                    <a href="#" class="pillar-item">
+                    <a href="https://www.notion.so/nameit-archive/THE-INNOVATION-LIBRARY-268b31f28c0780f8828de8fb3325a946" class="pillar-item">
                         <div class="icon">📚</div>
-                        <h3>20+ course guides và webinars đã chọn lọc</h3>
-                    </a>
-                    <a href="#" class="pillar-item">
-                        <div class="icon">📝</div>
-                        <h3>Templates dùng ngay cho dự án và vận hành</h3>
-                    </a>
-                    <a href="#" class="pillar-item">
-                        <div class="icon">🧑‍🏫</div>
-                        <h3>Mentorship theo nhu cầu và theo giai đoạn</h3>
-                    </a>
-                    <a href="#" class="pillar-item">
-                        <div class="icon">🤖</div>
-                        <h3>AI assistant hỗ trợ tư duy, kế hoạch, phản hồi</h3>
+                        <h3>Library of Resources and Tools</h3>
                     </a>
                     <a href="https://discord.gg/TmyzKkJJ" class="pillar-item">
                         <div class="icon">🤝</div>
-                        <h3>Cộng đồng Discord để học và làm cùng nhau</h3>
+                        <h3>Discord Community for Creators to Connect and Share</h3>
                     </a>
                     <a href="#" class="pillar-item">
                         <div class="icon">🚀</div>
-                        <h3>Hỗ trợ khởi nghiệp và phát triển doanh nghiệp</h3>
-                    </a>
-                    <a href="#" class="pillar-item">
-                        <div class="icon">🌱</div>
-                        <h3>Phát triển bền vững và tác động xã hội</h3>
+                        <h3>Support for Your Startup Ideas and Projects</h3>
                     </a>
                 </div>
             </div>
@@ -221,9 +201,10 @@ NameIt serves young people, communities, and social tech startups worldwide. The
 
         <!-- Part 5: Call to Action Section -->
         <section id="part-5" class="content-section cta-section">
-            <h2>Join to name it</h2>
+            <h2 style="color: #FFFFFF;">Join to name it</h2>
             <p>Ready to make a difference? Join our community today and start your journey as an innovator.</p>
-            <a href="sign-up.html" class="cta-btn">Join Now</a>
+            <br>
+            <a href="sign-up.php" class="cta-btn">Join Now</a>
         </section>
     </main>
 
@@ -235,7 +216,14 @@ NameIt serves young people, communities, and social tech startups worldwide. The
                 <p>On a mission to create young innovators everywhere</p>
                 <h4>Get In Touch</h4>
                 <p>Reach out to us to discuss how we can support your local business. We are located across the globe and can be reached via email at <a href="mailto:nameitorg@gmail.com">nameitorg@gmail.com</a>.</p>
+
+            <div class="social-links mt-8">
+                <a href="https://www.facebook.com/profile.php?id=61579775233093" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
+
+            <p class="copyright-text mt-12">&copy; 2025 NameIt. All rights reserved.</p>
         </div>
     </footer>
 
