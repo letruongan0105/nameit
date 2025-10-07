@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth - NameIt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Link Font Awesome cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- 1. NAV BAR (Đã cập nhật link active) -->
+    <header  class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo_nameit.png" alt="Name It Logo">
+        </a>
+        <nav class="nav-links">
+            <a href="growth.html">Growth</a>
+            <a href="https://www.notion.so/nameit-archive/THE-INNOVATION-LIBRARY-268b31f28c0780f8828de8fb3325a946">Library</a>
+            <a href="about-us.html" class="active">About Us</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="main-btn small-btn" onclick="window.location.href='sign-up.php'">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- 2. NỘI DUNG CHÍNH TRANG GROWTH (Cấu trúc 1 cột) -->
+    <main class="page-content">
+        
+        <!-- HEAD 1 LỚN (Thay thế cho hero-section) -->
+        <section class="container mx-auto pt-16 pb-8 text-center">
+             <h1 class="text-5xl font-extrabold mb-2 text-gray-900 text-center">Innovation Learning Laboratory</h1>
+             <h3 class="subtitle text-xl text-gray-600 text-center">Accelerate your project from curiosity to global impact.</h3>
+        </section>
+
+        <section class="container mx-auto py-8 px-4 growth-section">
+            
+            <!-- Đoạn nội dung giả đầu tiên -->
+            <p class="section-text mb-8">
+                Growth helps innovators expand their capacity through focused practice and reflection. Every project becomes a way to understand how they think, work, and adapt. The goal is steady progress that builds confidence and clarity.
+            </p>
+
+            <!-- Bộ sưu tập 3 hình ảnh (Xếp cùng hàng) -->
+            <div class="image-gallery-row">
+                <div class="gallery-item">
+                    <img src="img/Growth1.png" alt="Skill Acquisition Image" class="gallery-image-single">
+                    <p class="image-caption">Structured Learning Paths</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/300x200/5b5b5b/ffffff?text=COOMING SOON" alt="Project Practice Image" class="gallery-image-single">
+                    <p class="image-caption">Real-world Project Challenges</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/300x200/6c6c6c/ffffff?text=COOMING SOON" alt="Community Mentorship Image" class="gallery-image-single">
+                    <p class="image-caption">Expert Feedback and Support</p>
+                </div>
+            </div>
+
+            <!-- Đoạn văn bản giả thứ hai -->
+            <p class="section-text mt-12 mb-12">
+                
+            </p>
+
+            <br>
+            <br>
+        </section>
+        
+    </main>
+
+    <section id="part-5" class="content-section cta-section">
+        <h2 style="color: #FFFFFF;">Join to name it</h2>
+        <p>Ready to make a difference? Join our community today and start your journey as an innovator.</p>
+        <br>
+        <a href="sign-up.php" class="cta-btn">Join Now</a>
+    </section>
+    <!-- 3. PHẦN CONTACT US (Footer) -->
+    <footer id="contact-us">
+        <div class="footer-container">
+            <div class="footer-content">
+                <h3>CONTACT US</h3>
+                <p>On a mission to create young innovators everywhere</p>
+                <h4>Get In Touch</h4>
+                <p>Reach out to us to discuss how we can support your local business. We are located across the globe and can be reached via email at <a href="mailto:nameitorg@gmail.com">nameitorg@gmail.com</a>.</p>
+
+            <div class="social-links mt-8">
+                <a href="https://www.facebook.com/profile.php?id=61579775233093" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <p class="copyright-text mt-12">&copy; 2025 NameIt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS for Navbar toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
