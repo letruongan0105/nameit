@@ -11,7 +11,7 @@
 
 /* Apply font and basic styles to the body */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     color: var(--color-dark-text);
@@ -65,7 +65,7 @@ h2 {
     align-items: center;
     flex-direction: column;
     color: var(--color-light-text);
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     z-index: 9999;
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
@@ -98,27 +98,12 @@ h2 {
 
 /* Video Background Styles */
 .video-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.video-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); /* 20% opacity overlay */
-    z-index: 1;
 }
 
-#heroVideo {
+.video-container {
+    display: none;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -126,11 +111,11 @@ h2 {
 
 /* Top Navigation Bar */
 #navbar {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(227, 228, 219, 0.9);
+    background-color: #FFFFFF;
     backdrop-filter: blur(5px);
     transition: transform 0.5s ease-in-out;
     z-index: 1000;
@@ -242,18 +227,71 @@ h2 {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Hero background image with 30% opacity */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/background1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.hero-content { 
+    position: relative; 
+    z-index: 1; 
+    text-align: left; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-left: -400px;
+}
+
+/* Reduce left padding inside hero to pull content further left */
+.hero-section .container {
+    padding-left: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-section .container { padding-left: 0; }
+}
+
+.hero-title {
+    font-size: 2.5rem; 
+    line-height: 1.15;
+    margin: 0 0 0.5rem 0;
+}
+
+.hero-subtitle {
+    font-size: 0.5rem; 
+    line-height: 1.35;
+    margin: 0 0 1rem 0;
+}
+
+.hero-content .cta-btn {
+    align-self: flex-start;
+}
+
 .hero-content {
     z-index: 1;
 }
 
 .hero-title {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+    margin: left 20px;
+    color: #ffffff; /* brighten hero title */
+    text-shadow: 0 3px 6px rgba(0,0,0,0.45);
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 300;
 }
 
@@ -284,6 +322,15 @@ h2 {
     justify-content: center;
     border: 2px dashed var(--color-secondary);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ensure inserted images fill the intro placeholder frame */
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
 }
 
 .image-placeholder:hover {
@@ -382,6 +429,15 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Ensure inserted images fill the activities placeholder frame */
+.activity-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
 .activity-image-placeholder:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
@@ -412,7 +468,7 @@ h2 {
     width: 100%;
     height: 100%;
     z-index: 0;
-    opacity: 0.3;
+    opacity: 0.75;
 }
 
 .slideshow-container {
@@ -425,7 +481,7 @@ h2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: fadeEffect 1.5s;
+    animation: fadeEffect 1s;
 }
 
 /* Keyframe for the image fade effect */
@@ -1246,7 +1302,7 @@ footer {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -1400,6 +1456,23 @@ p.subtitle {
     color: var(--color-dark-text);
     text-decoration: underline;
 }
+
+.login-form {
+    display: none;
+    transition: opacity 0.3s ease-in-out; 
+    opacity: 0;
+}
+
+.signup-form.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Ensure only one auth form is visible at a time (ID-based) */
+#signup-form,
+#login-form { display: none; }
+#signup-form.active { display: block; }
+#login-form.active { display: block; }
 
 /* Dashboard styles (from your previous file) */
 .navbar {
@@ -1645,3 +1718,209 @@ p.subtitle {
     font-weight: bold;
 }
 
+.error-message {
+    padding: 12px;
+    color: #a42834;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #f8d7da;
+    border-radius: 6px;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #252525;
+}
+
+/* Bố cục chính cho trang About Us: Grid 2 cột */
+.about-layout {
+    display: grid;
+    /* Mặc định: 1 cột (cho mobile) */
+    grid-template-areas: 
+        "content"
+        "sidebar";
+    gap: 3rem;
+}
+
+/* Trên màn hình lớn (desktop/tablet): 2 cột, 1/4 cho sidebar, 3/4 cho nội dung */
+@media (min-width: 1024px) {
+    .about-layout {
+        grid-template-columns: 250px 1fr; /* 250px cố định cho sidebar */
+        grid-template-areas: "sidebar content";
+    }
+}
+
+/* Sidebar (Mục lục) */
+.toc-sidebar {
+    grid-area: sidebar;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    border-left: 4px solid #62369c; /* Điểm nhấn màu xanh */
+    /* Sticky sidebar trên desktop */
+    position: sticky; 
+    top: 80px; /* Cách navbar một khoảng */
+    height: fit-content;
+}
+
+.toc-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+.toc-nav ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.toc-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.toc-nav a {
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: block;
+    padding: 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+.toc-nav a:hover {
+    color: #62369c;
+    font-weight: 600;
+}
+
+.toc-sub-list {
+    list-style: none;
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+    border-left: 2px solid #e5e7eb;
+}
+
+/* Nội dung chính */
+.main-content {
+    grid-area: content;
+    line-height: 1.7;
+}
+
+.content-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #62369c;
+    padding-bottom: 0.5rem;
+}
+
+.content-subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #62369c;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.gap-list {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.gap-list li {
+    margin-bottom: 0.5rem;
+}
+
+.quote-box {
+    padding: 1.5rem;
+    background-color: #edeefc;
+    border-left: 5px solid #62369c;
+    border-radius: 4px;
+    font-style: italic;
+    color: #26094b;
+    margin: 2rem 0;
+}
+
+.content-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.page-content section:first-child h1 {
+    font-size: 3rem; /* Tăng kích thước H1 lên một chút để nổi bật hơn */
+    margin-bottom: 0.5rem;
+}
+
+/* Các tiêu đề trong nội dung chính (H2) */
+.section-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #bf87ff;
+    padding-bottom: 0.5rem;
+    text-align: center; 
+}
+
+.section-text {
+    font-size: 1.05rem;
+}
+
+/* Định dạng cho hình ảnh đơn ở cuối trang */
+.content-image-large {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Bộ sưu tập 3 hình ảnh - Đảm bảo cùng hàng */
+.image-gallery-row {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1.5rem;
+    margin: 3rem 0;
+    justify-content: space-between; 
+}
+
+.gallery-item {
+    width: 100%; /* Mặc định 100% trên mobile */
+    text-align: center;
+}
+
+.gallery-image-single {
+    width: 100%; 
+    max-width: 300px;
+    height: 200px;
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Shadow */
+    object-fit: cover;
+    transition: transform 0.3s;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-image-single:hover {
+    transform: scale(1.03);
+}
+
+.image-caption {
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-style: italic;
+}
+
+@media (min-width: 768px) {
+    .gallery-item {
+        width: calc(33.33% - 1rem); /* 3 hình ảnh trên desktop */
+    }
+}
