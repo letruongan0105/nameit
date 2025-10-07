@@ -1,86 +1,3 @@
-// Simple dashboard interactions (reverted to lightweight version)
-
-// Fill navbar username and greeting
-document.addEventListener('DOMContentLoaded', () => {
-    const firstName = localStorage.getItem('userFirstName') || '';
-    const lastName = localStorage.getItem('userLastName') || '';
-    const fullName = (firstName || lastName) ? `${firstName} ${lastName}`.trim() : 'Guest User';
-    const nameDisplay = document.querySelector('.username-display');
-    const greetingName = document.getElementById('dashboard-greeting-name');
-    const avatarImg = document.querySelector('.avatar-img');
-    if (nameDisplay) nameDisplay.textContent = fullName;
-    if (greetingName) greetingName.textContent = fullName;
-    const savedAvatar = localStorage.getItem('userAvatarDataUrl');
-    if (avatarImg && savedAvatar) avatarImg.src = savedAvatar;
-});
-
-// Sidebar tab switching
-document.addEventListener('DOMContentLoaded', function() {
-    const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('sidebar-toggle');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const allNavItems = document.querySelectorAll('.nav-list-item[data-tab-target]');
-
-    function hideAllTabContents() {
-        tabContents.forEach(content => {
-            content.classList.remove('active');
-            content.style.display = 'none';
-            content.style.opacity = '0';
-            content.style.visibility = 'hidden';
-        });
-    }
-    
-    function showTabContent(tabId) {
-        // Try direct id match (e.g., 'dashboard')
-        let selectedTab = document.getElementById(tabId);
-        // Fallback to id with '-content' suffix (e.g., 'explore-content')
-        if (!selectedTab) selectedTab = document.getElementById(`${tabId}-content`);
-        // Fallback to data attribute (e.g., data-tab-id="explore")
-        if (!selectedTab) selectedTab = document.querySelector(`.tab-content[data-tab-id="${tabId}"]`);
-        if (selectedTab) {
-            hideAllTabContents();
-            selectedTab.classList.add('active');
-            selectedTab.style.display = 'block';
-            selectedTab.style.opacity = '1';
-            selectedTab.style.visibility = 'visible';
-        }
-    }
-    
-    function deactivateAllNavItems() {
-        allNavItems.forEach(navItem => navItem.classList.remove('active'));
-    }
-    
-    // Initial state
-    hideAllTabContents();
-    showTabContent('dashboard');
-    const defaultNav = document.querySelector('.nav-list-item[data-tab-target="dashboard"]');
-    if (defaultNav) defaultNav.classList.add('active');
-
-    // Toggle sidebar button
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                sidebar.classList.toggle('hidden');
-            } else {
-                sidebar.classList.toggle('collapsed');
-            }
-        });
-    }
-
-    // Event delegation for tab switching
-    if (sidebar) {
-        sidebar.addEventListener('click', function(event) {
-            const navItem = event.target.closest('.nav-list-item[data-tab-target]');
-            if (!navItem) return;
-                const tabId = navItem.dataset.tabTarget;
-            if (!tabId) return;
-                    deactivateAllNavItems();
-                    navItem.classList.add('active');
-                    showTabContent(tabId);
-            if (window.innerWidth <= 768) sidebar.classList.remove('hidden');
-        });
-    }
-});
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
@@ -185,6 +102,65 @@ const exploreTopics = {
             { name: "Module 4: Case Studies: Tesla", lessons: []},
             { name: "Module 5: Case Studies: Waymo", lessons: []},
             { name: "Module 6: Case Studies: Startups", lessons: []}
+        ]
+    }
+    ,
+    'ai': {
+        name: 'Artificial Intelligence',
+        description: 'Master machine learning algorithms and AI applications.',
+        modules: [
+            { name: 'Module 1: Intro to AI', lessons: [
+                { title: 'Video: What is AI?', url: 'https://youtu.be/2ePf9rue1Ao' },
+                { title: 'Video: Machine Learning Basics', url: 'https://youtu.be/GwIo3gDZCVQ' }
+            ]},
+            { name: 'Module 2: Neural Networks', lessons: [
+                { title: 'Video: Neural Networks Explained', url: 'https://youtu.be/aircAruvnKk' }
+            ]}
+        ]
+    },
+    'robotics': {
+        name: 'Robotics',
+        description: 'Build and program robots for real-world tasks.',
+        modules: [
+            { name: 'Module 1: Robotics Overview', lessons: [
+                { title: 'Video: Intro to Robotics', url: 'https://youtu.be/v5j7s4d3N5o' }
+            ]}
+        ]
+    },
+    'quantum-computing': {
+        name: 'Quantum Computing',
+        description: 'Understand the basics of quantum computation.',
+        modules: [
+            { name: 'Module 1: Qubits and Superposition', lessons: [
+                { title: 'Video: What is Quantum Computing?', url: 'https://youtu.be/scy4ZyfmvYc' }
+            ]}
+        ]
+    },
+    'digital-twin': {
+        name: 'Digital Twin',
+        description: 'Mirror physical systems to improve operations.',
+        modules: [
+            { name: 'Module 1: Digital Twin Basics', lessons: [
+                { title: 'Video: What is a Digital Twin?', url: 'https://youtu.be/N7tZfCYNhgM' }
+            ]}
+        ]
+    },
+    'web-development': {
+        name: 'Web Development',
+        description: 'Build interactive and responsive websites from scratch.',
+        modules: [
+            { name: 'Module 1: HTML & CSS', lessons: [
+                { title: 'Video: HTML Crash Course', url: 'https://youtu.be/pQN-pnXPaVg' }
+            ]}
+        ]
+    },
+    'financial-accounting': {
+        name: 'Financial Accounting',
+        description: 'Master financial principles and manage business finances.',
+        modules: [
+            { name: 'Module 1: Accounting Basics', lessons: [
+                { title: 'Video: Intro to Accounting', url: 'https://youtu.be/_ZxLm3c7GkE' }
+            ]}
         ]
     }
 };
@@ -314,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const exploreGridView = document.getElementById('explore-grid-view');
     const exploreDetailContent = document.getElementById('explore-detail-content');
     const backToGridBtn = document.getElementById('back-to-explore-grid');
-    const exploreGrid = document.querySelector('.explore-grid');
+    const exploreCards = document.querySelectorAll('.explore-card');
     const modulesContainer = document.getElementById('modules-container');
     const backToModulesBtn = document.getElementById('back-to-modules-btn');
     const lessonViewContent = document.getElementById('lesson-view-content');
@@ -326,39 +302,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevLessonBtn = document.getElementById('prev-lesson-btn');
     const nextLessonBtn = document.getElementById('next-lesson-btn');
 
-    // Use event delegation to handle clicks on cards
-    if (exploreGrid) {
-        exploreGrid.addEventListener('click', (e) => {
-            const card = e.target.closest('.explore-card');
-            if (!card) return;
+    exploreCards.forEach(card => {
+        card.addEventListener('click', () => {
             const exploreId = card.getAttribute('data-explore-id');
-            // Fallback: build a temporary topic from card DOM if id not defined
-            if (!exploreId || !exploreTopics[exploreId]) {
-                const tmpId = 'custom-topic';
-                const title = (card.querySelector('.card-title')?.textContent || 'Topic').trim();
-                exploreTopics[tmpId] = {
-                    name: title,
-                    description: '',
-                    modules: [
-                        { name: 'Module 1', lessons: [] },
-                        { name: 'Module 2', lessons: [] },
-                        { name: 'Module 3', lessons: [] }
-                    ]
-                };
-                currentTopicId = tmpId;
+            if (exploreTopics[exploreId]) {
+                currentTopicId = exploreId;
                 exploreGridView.style.display = 'none';
                 exploreDetailContent.style.display = 'block';
-                document.getElementById('explore-topic-title').textContent = title;
-                renderModules(tmpId);
-                return;
+                document.getElementById('explore-topic-title').textContent = exploreTopics[exploreId].name;
+                renderModules(exploreId);
             }
-            currentTopicId = exploreId;
-            exploreGridView.style.display = 'none';
-            exploreDetailContent.style.display = 'block';
-            document.getElementById('explore-topic-title').textContent = exploreTopics[exploreId].name;
-            renderModules(exploreId);
         });
-    }
+    });
 
     backToGridBtn.addEventListener('click', () => {
         exploreGridView.style.display = 'block';
@@ -373,10 +328,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     watchedBtn.addEventListener('click', () => {
         markLessonCompleted(true);
+        watchedBtn.classList.add('active-watched');
+        skipBtn.classList.remove('active-skip');
     });
 
     skipBtn.addEventListener('click', () => {
         markLessonCompleted(true);
+        skipBtn.classList.add('active-skip');
+        watchedBtn.classList.remove('active-watched');
     });
 
     prevLessonBtn.addEventListener('click', () => {
@@ -395,22 +354,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Reset visual selection only when user clicks the center Next Lesson label
+    const nextLabelClickable = document.getElementById('next-lesson-label');
+    if (nextLabelClickable) {
+        nextLabelClickable.addEventListener('click', () => {
+            watchedBtn.classList.remove('active-watched');
+            skipBtn.classList.remove('active-skip');
+        });
+    }
+
     function renderModules(topicId) {
         const modules = exploreTopics[topicId].modules;
         modulesContainer.innerHTML = '';
         modules.forEach((module, moduleIndex) => {
             const isModuleCompleted = module.lessons.every(lesson => lesson.completed);
             const moduleHtml = `
-                <div class="module-accordion" data-module-index="${moduleIndex}">
+                <div class="module-accordion${isModuleCompleted ? ' completed' : ''}" data-module-index="${moduleIndex}">
                     <div class="module-header">
-                        <span class="${isModuleCompleted ? 'icon-tick-checked' : 'icon-tick-unchecked'}"></span>
                         <span>${module.name}</span>
                         <span class="icon">&gt;</span>
                     </div>
                     <div class="module-content">
                         <ul>
                             ${module.lessons.map((lesson, lessonIndex) => `
-                                <li data-module-index="${moduleIndex}" data-lesson-index="${lessonIndex}">
+                                <li data-lesson-index="${lessonIndex}">
                                     <span class="${lesson.completed ? 'icon-tick-checked' : 'icon-tick-unchecked'}"></span>
                                     ${lesson.title}
                                 </li>
@@ -439,19 +406,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function attachLessonClickListeners() {
         document.querySelectorAll('.module-content li').forEach(li => {
             li.addEventListener('click', () => {
-                const moduleIdx = parseInt(li.getAttribute('data-module-index'), 10);
-                const lessonIdx = parseInt(li.getAttribute('data-lesson-index'), 10);
-                if (Number.isNaN(moduleIdx) || Number.isNaN(lessonIdx)) return;
-
-                // Compute flat index for currentLessonIndex
                 const topic = exploreTopics[currentTopicId];
-                let flatIndex = 0;
-                for (let i = 0; i < topic.modules.length; i++) {
-                    if (i < moduleIdx) {
-                        flatIndex += topic.modules[i].lessons.length;
+                let lessonCount = 0;
+                let found = false;
+
+                // Find the global index of the clicked lesson
+                for (let mod of topic.modules) {
+                    for (let lesson of mod.lessons) {
+                        if (lesson.title === li.textContent.trim()) {
+                            currentLessonIndex = lessonCount;
+                            found = true;
+                            break;
+                        }
+                        lessonCount++;
                     }
+                    if (found) break;
                 }
-                currentLessonIndex = flatIndex + lessonIdx;
                 displayLesson(currentTopicId, currentLessonIndex);
             });
         });
@@ -482,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
             videoFrame.style.display = 'block';
-    } else {
+        } else {
             videoFrame.style.display = 'none';
             videoDescription.textContent = `This lesson is an external resource: ${lesson.url}`;
             // Optional: you can display a link here
@@ -495,6 +465,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         prevLessonBtn.disabled = lessonIndex === 0;
         nextLessonBtn.disabled = lessonIndex >= flatLessons.length - 1;
+
+        // Next lesson label in center
+        const nextLabel = document.getElementById('next-lesson-label');
+        if (nextLabel) {
+            if (lessonIndex < flatLessons.length - 1) {
+                nextLabel.textContent = `Next: ${flatLessons[lessonIndex + 1].title}`;
+            } else {
+                nextLabel.textContent = '';
+            }
+        }
     }
 
     function updateModuleCompletion() {
@@ -504,6 +484,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 module.completed = lessonsCompleted;
             });
         }
+        // Cập nhật class hiển thị màu cho module đã hoàn thành nếu đang ở trang chi tiết
+        document.querySelectorAll('.module-accordion').forEach((acc, i) => {
+            const idx = parseInt(acc.getAttribute('data-module-index'), 10);
+            if (!Number.isNaN(idx)) {
+                const mod = exploreTopics[currentTopicId]?.modules[idx];
+                if (mod) {
+                    if (mod.completed) acc.classList.add('completed');
+                    else acc.classList.remove('completed');
+                }
+            }
+        });
+        // Cập nhật thanh tiến độ trên các card
+        Object.keys(exploreTopics).forEach(topicId => {
+            const topic = exploreTopics[topicId];
+            if (!topic || !topic.modules || topic.modules.length === 0) return;
+            const total = topic.modules.length;
+            const completed = topic.modules.filter(m => m.completed).length;
+            const pct = Math.round((completed / total) * 100);
+            const fill = document.querySelector(`.progress-fill[data-progress-for="${topicId}"]`);
+            if (fill) fill.style.width = `${pct}%`;
+        });
     }
 
     function markLessonCompleted(isCompleted) {
@@ -524,10 +525,218 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (currentLesson) {
             currentLesson.completed = isCompleted;
-            if (typeof saveProgress === 'function') {
-                try { saveProgress(); } catch {}
-            }
+            updateModuleCompletion();
+            saveProgress();
             renderModules(currentTopicId);
         }
     }
 });
+
+// Các hàm này được định nghĩa và gán vào window để có thể truy cập toàn cục 
+// (do được gọi qua onclick trong HTML sử dụng type="module")
+
+/**
+ * Hiển thị thông tin người dùng giả lập.
+ * Trong ứng dụng thực tế, hàm này sẽ lấy dữ liệu từ API hoặc Firestore.
+ */
+function loadUserInfo() {
+    const defaultName = "Guest User";
+    // Cập nhật tất cả các vị trí hiển thị tên
+    document.getElementById('userName').textContent = defaultName;
+    const dashboardUserName = document.getElementById('dashboard-user-name');
+    if (dashboardUserName) {
+        dashboardUserName.textContent = defaultName;
+    }
+    const userNameDisplay = document.getElementById('user-name-display');
+    if (userNameDisplay) {
+        userNameDisplay.textContent = defaultName;
+    }
+    
+    // Giả lập User ID
+    const userId = "USER-7890-XYZ";
+    const userIdDisplay = document.getElementById('current-user-id');
+    if (userIdDisplay) {
+        userIdDisplay.textContent = userId;
+    }
+}
+
+
+/**
+ * Xử lý chuyển đổi giữa các tab nội bộ trong Dashboard (Home, My Plan, My Process).
+ * @param {string} tabId - ID của tab nội bộ muốn hiển thị ('home', 'plan', 'process').
+ */
+function showInnerTab(tabId) {
+    // Loại bỏ active khỏi tất cả các tab content
+    document.querySelectorAll('.inner-tab-content').forEach(el => {
+        el.classList.remove('active');
+    });
+    // Loại bỏ active khỏi tất cả các tab item
+    document.querySelectorAll('.inner-tabs-nav .inner-tab-item').forEach(el => {
+        el.classList.remove('active');
+    });
+
+    // Thêm active cho tab content và tab item được chọn
+    const contentElement = document.getElementById(`inner-content-${tabId}`);
+    const itemElement = document.querySelector(`.inner-tab-item[data-inner-tab="${tabId}"]`);
+    
+    if (contentElement) {
+        contentElement.classList.add('active');
+    }
+    if (itemElement) {
+        itemElement.classList.add('active');
+    }
+}
+
+
+/**
+ * Xử lý thu gọn/mở rộng Sidebar.
+ */
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const icon = document.querySelector('#sidebar-toggle i');
+    
+    sidebar.classList.toggle('collapsed');
+    
+    // Tùy chỉnh icon (giữ nguyên fa-bars cho cả hai trạng thái để đơn giản)
+    if (sidebar.classList.contains('collapsed')) {
+        // Icon đang là fa-bars, không cần đổi
+    } else {
+        // Icon đang là fa-bars, không cần đổi
+    }
+}
+
+
+// =========================================
+// HÀM XỬ LÝ PROFILE
+// =========================================
+
+/**
+ * Hiển thị form chỉnh sửa tên.
+ */
+function showNameEdit() {
+    const editForm = document.getElementById('name-edit-form');
+    const editBtn = document.getElementById('edit-name-btn');
+    if (editForm && editBtn) {
+        editForm.classList.remove('hidden');
+        editBtn.classList.add('hidden');
+        const userNameDisplay = document.getElementById('user-name-display').textContent;
+        document.getElementById('new-name').value = userNameDisplay.trim();
+    }
+}
+
+/**
+ * Hủy bỏ việc chỉnh sửa tên.
+ */
+function cancelNameEdit() {
+    const editForm = document.getElementById('name-edit-form');
+    const editBtn = document.getElementById('edit-name-btn');
+    if (editForm && editBtn) {
+        editForm.classList.add('hidden');
+        editBtn.classList.remove('hidden');
+    }
+}
+
+/**
+ * Lưu tên mới (giả lập).
+ */
+function saveName() {
+    const newNameInput = document.getElementById('new-name');
+    if (!newNameInput) return;
+
+    const newName = newNameInput.value;
+    if (newName.trim() !== "") {
+        // Giả lập lưu tên
+        document.getElementById('user-name-display').textContent = newName;
+        document.getElementById('userName').textContent = newName;
+        const dashboardUserName = document.getElementById('dashboard-user-name');
+        if (dashboardUserName) {
+            dashboardUserName.textContent = newName;
+        }
+        cancelNameEdit();
+        console.log(`Tên đã được lưu: ${newName}`);
+    } else {
+        console.error("Tên không được để trống.");
+    }
+}
+
+/**
+ * Xem trước avatar mới sau khi chọn file.
+ * @param {Event} event - Sự kiện thay đổi input file.
+ */
+function previewAvatar(event) {
+    const file = event.target.files[0];
+    const profileAvatar = document.getElementById('profile-avatar');
+    const navbarAvatar = document.querySelector('.navbar-user .user-avatar');
+    
+    if (file && profileAvatar && navbarAvatar) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            profileAvatar.src = e.target.result;
+            // Cập nhật avatar trên Navbar
+            navbarAvatar.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+
+// =========================================
+// KHỞI TẠO VÀ XỬ LÝ SỰ KIỆN CHÍNH
+// =========================================
+
+/**
+ * Xử lý chuyển đổi giữa các tab chính trong Sidebar.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Khởi tạo chức năng chuyển đổi tab chính (Sidebar items)
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab-target');
+            
+            // Ẩn tất cả nội dung tab
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Hiển thị nội dung tab được chọn
+            const targetContent = document.getElementById(`${tabId}-content`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+            
+            // Cập nhật trạng thái active của sidebar item
+            document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+
+            // Đảm bảo tab nội bộ 'home' được kích hoạt khi quay lại dashboard
+            if (tabId === 'dashboard') {
+                showInnerTab('home');
+            }
+        });
+    });
+
+    // 2. Khởi tạo tab Home nội bộ khi trang tải lần đầu
+    showInnerTab('home');
+
+    // 3. Tải và hiển thị thông tin người dùng giả lập
+    loadUserInfo();
+});
+
+
+// Gán các hàm vào đối tượng window để chúng có thể được truy cập từ HTML (do sử dụng type="module")
+window.showInnerTab = showInnerTab;
+window.toggleSidebar = toggleSidebar;
+
+// Also attach a defensive event listener in case onclick is removed later
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleSidebar();
+        });
+    }
+});
+window.showNameEdit = showNameEdit;
+window.cancelNameEdit = cancelNameEdit;
+window.saveName = saveName;
+window.previewAvatar = previewAvatar;
